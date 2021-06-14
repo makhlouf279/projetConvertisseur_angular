@@ -5,7 +5,7 @@
 </div>
       <div class="card">
 
-            Montant<br><input type="text" placeholder="Montant">
+            Montant<br><input type="text" placeholder="Montant" [(ngModel)]="montant">
                            <br><br>
                 <input type="text" placeholder="Canadian Dollars"  [disabled]="statut">
         <!--
@@ -21,7 +21,7 @@
                       <br><br>
                         <button (click)="convertirMoney()">Convertir</button>
                         <br> <br>
-                        <input type="text" placeholder="Resultat">
+                        <input type="text" placeholder="Resultat" [(ngModel)]="resultat">
 
       </div>
   <br> <br> <br>

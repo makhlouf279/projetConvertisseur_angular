@@ -13,11 +13,11 @@ export class AppComponent implements OnInit{
   title = 'convertisseur';
   moneyservice:MoneyService;
   myMoney?:Money[];
-  montant?:any;
+  montant?:number=1;
   statut:boolean=true;
   stat:boolean= true;
-  rate?:Money[];
-  resultat?:number;
+  rate?:number=1;
+  resultat?:number=1;
 
 
 
@@ -36,7 +36,7 @@ export class AppComponent implements OnInit{
 
   }
   getLesMoney(rate:Money[]){
-    this.rate=rate;
+    this.rate=2;
 
   }
 /*
@@ -50,7 +50,11 @@ export class AppComponent implements OnInit{
   */
 
   convertirMoney(){
-      this.resultat=<any>this.montant*<any>this.rate;
+    if(this.montant!=undefined&& this.montant>=0 &&this.rate!=undefined&& this.rate>=0){
+      this.resultat=this.montant*this.rate;
+    }else {
+      this.resultat=0;
+    }
       return this.resultat;
 
   }
