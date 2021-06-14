@@ -7,14 +7,15 @@
 
             Montant<br><input type="text" placeholder="Montant">
                            <br><br>
-
+                <input type="text" placeholder="Canadian Dollars"  [disabled]="statut">
+        <!--
                  <select   [disabled]="statut">
                   <option *ngFor ="let c of myMoney">{{c.name}}</option>
-                 </select>
+                 </select>-->
+                  <p>Au</p>
+                  <!--<button (click)="changerDirection()">Changer</button>-->
 
-                  <button (click)="changerDirection()">Changer</button>
-
-                  <select   [disabled]="stat">
+                  <select >
                       <option *ngFor ="let s of myMoney" >{{s.name}}</option>
                   </select>
                       <br><br>

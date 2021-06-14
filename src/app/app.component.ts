@@ -39,7 +39,7 @@ export class AppComponent implements OnInit{
     this.rate=rate;
 
   }
-
+/*
   changerDirection(){
     if(this.statut=!this.statut){
         this.stat=false;
@@ -47,6 +47,8 @@ export class AppComponent implements OnInit{
         this.stat=true;
 
   }
+  */
+
   convertirMoney(){
       this.resultat=<any>this.montant*<any>this.rate;
       return this.resultat;
