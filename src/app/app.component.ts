@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { MoneyService } from './money.service';
 import { OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -30,13 +31,12 @@ export class AppComponent implements OnInit{
     this.moneyservice.getMoney().subscribe(
       (data: Money[] | undefined) =>{
         this.myMoney= data;
+
       })
 
   }
-
-  getLesMoney(rate:any){
+  getLesMoney(rate:Money[]){
     this.rate=rate;
-
 
   }
 
@@ -47,7 +47,6 @@ export class AppComponent implements OnInit{
         this.stat=true;
 
   }
-
   convertirMoney(){
       this.resultat=<any>this.montant*<any>this.rate;
       return this.resultat;

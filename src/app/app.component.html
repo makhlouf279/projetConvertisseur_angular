@@ -8,18 +8,14 @@
             Montant<br><input type="text" placeholder="Montant">
                            <br><br>
 
-                 <select  (change)= "getLesMoney($any($event.target).value)" [disabled]="statut">
-                      <option *ngFor="let m of myMoney" >
-                        {{m.name}}
-                      </option>
-                  </select>
+                 <select   [disabled]="statut">
+                  <option *ngFor ="let c of myMoney">{{c.name}}</option>
+                 </select>
 
                   <button (click)="changerDirection()">Changer</button>
 
-                  <select  [disabled]="stat">
-                      <option *ngFor ="let s of myMoney">
-                        {{s.name}}
-                      </option>
+                  <select   [disabled]="stat">
+                      <option *ngFor ="let s of myMoney" >{{s.name}}</option>
                   </select>
                       <br><br>
                         <button (click)="convertirMoney()">Convertir</button>
