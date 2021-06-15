@@ -9,15 +9,15 @@ import { Observable, of } from 'rxjs';
 })
 
 export class MoneyService {
-  URL = "http://localhost:3000/money";
+  URL = "https://www.floatrates.com/daily/cad.json";
   http:HttpClient;
 
   constructor(clientHttp: HttpClient) {
     this.http = clientHttp;
    }
 
-   getMoney():Observable<Money[]>{
-     return this.http.get<Money[]>(this.URL);
+   getMoney(): Observable<any>{
+     return this.http.get<any>(this.URL);
    }
 
 }

@@ -5,23 +5,19 @@
 </div>
       <div class="card">
 
-            Montant<br><input type="text" placeholder="Montant" [(ngModel)]="montant">
+            Montant en $ canadien<br><input type="text" placeholder="Montant" [(ngModel)]="montant">
                            <br><br>
-                <input type="text" placeholder="Canadian Dollars"  [disabled]="statut">
-        <!--
-                 <select   [disabled]="statut">
-                  <option *ngFor ="let c of myMoney">{{c.name}}</option>
-                 </select>-->
-                  <p>Au</p>
-                  <!--<button (click)="changerDirection()">Changer</button>-->
 
-                  <select >
-                      <option *ngFor ="let s of myMoney" >{{s.name}}</option>
-                  </select>
+                 <select  (change)="selectCurenecy($event)">
+                     <option *ngFor ="let c of map | keyvalue">{{c.key}}</option>
+                 </select>
+
                       <br><br>
                         <button (click)="convertirMoney()">Convertir</button>
-                        <br> <br>
-                        <input type="text" placeholder="Resultat" [(ngModel)]="resultat">
+                        <button (click)="convertirMoneyInverse()">Convertir inverse</button>
+                        <br>
+        <div [hidden]="!selectCurency">
+        Montant en {{selectCurency?.name}} <br> <input type="text" placeholder="Resultat" [(ngModel)]="resultat"></div>
 
       </div>
   <br> <br> <br>
