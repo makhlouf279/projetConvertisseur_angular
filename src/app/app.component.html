@@ -1,59 +1,25 @@
-
-
 <div>
   <h1 class="jumbotron">{{title}}</h1>
 </div>
-      <div class="card">
-
-            Montant en $ canadien<br><input type="text" placeholder="Montant" [(ngModel)]="montant">
-                           <br><br>
-
-                 <select  (change)="selectCurenecy($event)">
-                     <option *ngFor ="let c of map | keyvalue">{{c.key}}</option>
-                 </select>
-
-                      <br><br>
-                        <button (click)="convertirMoney()">Convertir</button>
-                        <button (click)="convertirMoneyInverse()">Convertir inverse</button>
-                        <br>
-        <div [hidden]="!selectCurency">
-        Montant en {{selectCurency?.name}} <br> <input type="text" placeholder="Resultat" [(ngModel)]="resultat"></div>
-
-      </div>
-  <br> <br> <br>
-<footer>
-2021 &copy; Tous les drois reserves
-</footer>
-
-
-
-<router-outlet></router-outlet>
-
-
-
-
-<!--
-
-
-    <div class="search">
-            <label>Money</label>
-
-              <select (change)="getlesMoney($any($event.target).value)">
-
-                <option *ngFor ="let m of myMoney" value={{m.Slug}}>
-                  {{m.code}}
-                </option>
-                <option *ngFor ="let m of myMoney" value={{m.Slug}}>
-                  {{m.code}}
-                </option>
-
-
-              </select>
-
-                <br><br>
-              <button  class="btn" >Convertir</button>
-
-    </div>
+<div class="card">
+  <div>
+    Montant en Dollar Canadien
+  </div>
+  <div class="card">
+    <input [(ngModel)]="canadianDollarAmount"/>
   </div>
 
--->
+  <div class="card">
+    <select (change)="selectCurrencyChange($event)" [selectedIndex]="selectCurrencyIndex">
+      <option *ngFor="let currency of currencies">{{currency.name}}</option>
+    </select>
+  </div>
+  <div  class="card">
+    <button (click)="converterMoney()">Convertir</button>
+    <button (click)="converterMoneyInverse()">Convertir inverse</button>
+  </div>
+  <div [hidden]="!selectCurrency" class="card">
+    <div>Montant en {{selectCurrency?.name}}</div>
+    <div><input [(ngModel)]="CurrencyAmount"></div>
+  </div>
+</div>
