@@ -1,1 +1,97 @@
 /* You can add global styles to this file, and also import other style files */
+.flex-container {
+  /* We first create a flex layout context */
+  display: flex;
+
+  /* Then we define the flow direction
+     and if we allow the items to wrap
+   * Remember this is the same as:
+   * flex-direction: row;
+   * flex-wrap: wrap;
+   */
+  flex-flow: row wrap;
+
+  /* Then we define how is distributed the remaining space */
+  justify-content: space-around;
+
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.flex-item {
+  background: tomato;
+  padding: 5px;
+  /*width: 200px;*/
+  /*height: 150px;*/
+  max-width: max-content;
+  max-height: max-content;
+  margin-top: 10px;
+  /*line-height: 150px;*/
+  color: white;
+  font-weight: bold;
+  font-size: 1em;
+  text-align: center;
+}
+
+
+.wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  font-weight: bold;
+  text-align: center;
+}
+
+.wrapper > * {
+  padding: 10px;
+  flex: 1 100%;
+}
+
+.header {
+  /*background: tomato;*/
+  /*max-width: 600px;*/
+}
+
+.footer {
+  /*background: lightgreen;*/
+  /*max-width: 600px;*/
+}
+
+.main {
+  text-align: left;
+  /*background: deepskyblue;*/
+  /*max-width: 600px;*/
+}
+
+.aside-1 {
+  background: gold;
+}
+
+.aside-2 {
+  background: hotpink;
+}
+
+@media all and (min-width: 600px) {
+  .aside { flex: 1 0 0; }
+}
+
+@media all and (min-width: 800px) {
+  .main    { flex: 3 0px; }
+  .aside-1 { order: 1; }
+  .main    { order: 2; }
+  .aside-2 { order: 3; }
+  .footer  { order: 4; }
+}
+
+body {
+  padding: 2em;
+}
+
+.convert{
+  color: green;
+  background-color: aquamarine;
+}
+.reverse{
+  color: red;
+  background-color: gold;
+}

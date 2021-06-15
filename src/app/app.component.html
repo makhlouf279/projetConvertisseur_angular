@@ -1,25 +1,35 @@
-<div>
-  <h1 class="jumbotron">{{title}}</h1>
+<div class="header">
+  <div class="flex-container">
+    <h1>{{title}}</h1>
+  </div>
 </div>
-<div class="card">
-  <div>
-    Montant en Dollar Canadien
-  </div>
-  <div class="card">
-    <input [(ngModel)]="canadianDollarAmount"/>
-  </div>
+<div>
+  <div class="main">
+    <div class="flex-container">
+      <div class="flex-item">
+        <div>choisir la monnaie a convertir</div>
+        <div><select (change)="selectCurrencyChange($event)" [selectedIndex]="selectCurrencyIndex">
+          <option *ngFor="let currency of currencies">{{currency.name}}</option>
+        </select></div>
+      </div>
+    </div>
 
-  <div class="card">
-    <select (change)="selectCurrencyChange($event)" [selectedIndex]="selectCurrencyIndex">
-      <option *ngFor="let currency of currencies">{{currency.name}}</option>
-    </select>
-  </div>
-  <div  class="card">
-    <button (click)="converterMoney()">Convertir</button>
-    <button (click)="converterMoneyInverse()">Convertir inverse</button>
-  </div>
-  <div [hidden]="!selectCurrency" class="card">
-    <div>Montant en {{selectCurrency?.name}}</div>
-    <div><input [(ngModel)]="CurrencyAmount"></div>
+    <div class="flex-container">
+      <div class="flex-item">
+        <div>
+          Montant en Dollar Canadien
+        </div>
+        <input [(ngModel)]="canadianDollarAmount"/>
+      </div>
+      <div class="flex-item">
+        <button (click)="converterMoney()" class="convert">Convertir &darr;</button>
+        <button (click)="converterMoneyInverse()" class="reverse">Convertir inverse &uarr;
+        </button>
+      </div>
+      <div [hidden]="!selectCurrency" class="flex-item">
+        <div>Montant en {{selectCurrency?.name}}</div>
+        <div><input [(ngModel)]="CurrencyAmount"></div>
+      </div>
+    </div>
   </div>
 </div>
