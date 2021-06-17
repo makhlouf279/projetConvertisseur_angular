@@ -7,28 +7,39 @@
   <div class="main">
     <div class="flex-container">
       <div class="flex-item">
-        <div>choisir la monnaie a convertir</div>
-        <div><select (change)="selectCurrencyChange($event)" [selectedIndex]="selectCurrencyIndex">
-          <option *ngFor="let currency of currencies">{{currency.name}}</option>
-        </select></div>
+        <div>choisir la monnaie origine</div>
+        <div>
+          <select (change)="selectCurrencyFromChange($event)">
+            <option *ngFor="let currency of currenciesFromName">{{currency}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="flex-item">
+        <div>
+          choisir la monnaie destination
+        </div>
+        <div>
+          <select (change)="selectCurrencyToChange($event)" [selectedIndex]="selectToCurrencyIndex">
+            <option *ngFor="let currency of currencies">{{currency.name}}</option>
+          </select>
+        </div>
       </div>
     </div>
 
     <div class="flex-container">
-      <div class="flex-item">
+      <div  [hidden]="!selectToCurrency" class="flex-item">
         <div>
-          Montant en Dollar Canadien
+          Montant en {{selectFromCurrency}}
         </div>
-        <input [(ngModel)]="canadianDollarAmount"/>
+        <input [(ngModel)]="currencyFromAmount" (ngModelChange)="converterMoney()"/>
       </div>
-      <div class="flex-item">
-        <button (click)="converterMoney()" class="convert">Convertir &darr;</button>
-        <button (click)="converterMoneyInverse()" class="reverse">Convertir inverse &uarr;
-        </button>
-      </div>
-      <div [hidden]="!selectCurrency" class="flex-item">
-        <div>Montant en {{selectCurrency?.name}}</div>
-        <div><input [(ngModel)]="CurrencyAmount"></div>
+      <div [hidden]="!selectToCurrency" class="flex-item">
+        <div>
+          Montant en {{selectToCurrency?.name}}
+        </div>
+        <div>
+          <input [(ngModel)]="currencyToAmount" (ngModelChange)="converterMoneyInverse()">
+        </div>
       </div>
     </div>
   </div>
