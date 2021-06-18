@@ -1,33 +1,34 @@
 
+<div class="app">
 
-<div>
-  <h1 class="jumbotron">{{title}}</h1>
-</div>
       <div class="card">
+        <div >
+          <h1>{{title}}</h1>
+        </div>
+        <div class="form">
+             Dollars Canadien <input type="text" placeholder="Entrez Votre Montant" [(ngModel)]="montant" >
 
-            Montant<br><input type="text" placeholder="Montant">
-                           <br><br>
-                <input type="text" placeholder="Canadian Dollars"  [disabled]="statut">
-        <!--
-                 <select   [disabled]="statut">
-                  <option *ngFor ="let c of myMoney">{{c.name}}</option>
-                 </select>-->
-                  <p>Au</p>
-                  <!--<button (click)="changerDirection()">Changer</button>-->
+          Vers
 
-                  <select >
-                      <option *ngFor ="let s of myMoney" >{{s.name}}</option>
+                  <select class="sel" (change)="selectCrency($event)">
+                    <option>Choisir Votre Monnais</option>
+                    <option *ngFor ="let s of map | keyvalue">{{s.key}}</option>
                   </select>
-                      <br><br>
-                        <button (click)="convertirMoney()">Convertir</button>
-                        <br> <br>
-                        <input type="text" placeholder="Resultat">
+
+        </div>
+                      <div class="btn">
+                       <button  (click)="convertirMoney()">Convertir</button>
+                        <button  (click)="convertirMoneyInverse()">Convertir Inverse</button>
+                      </div>
+
+                        <div >
+                          <input class ="res" type="text" placeholder="Votre Resultat" [(ngModel)]="resultat" >
+                        </div>
+        <br>
+        <div [hidden]="!selectCurency">Montant  en {{selectCurency?.name}}</div>
 
       </div>
-  <br> <br> <br>
-<footer>
-2021 &copy; Tous les drois reserves
-</footer>
+</div>
 
 
 
@@ -36,28 +37,4 @@
 
 
 
-<!--
 
-
-    <div class="search">
-            <label>Money</label>
-
-              <select (change)="getlesMoney($any($event.target).value)">
-
-                <option *ngFor ="let m of myMoney" value={{m.Slug}}>
-                  {{m.code}}
-                </option>
-                <option *ngFor ="let m of myMoney" value={{m.Slug}}>
-                  {{m.code}}
-                </option>
-
-
-              </select>
-
-                <br><br>
-              <button  class="btn" >Convertir</button>
-
-    </div>
-  </div>
-
--->
